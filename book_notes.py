@@ -1,7 +1,124 @@
-
 # CHAPTER 5: Functions
+"""
+# demonstrate sqrt function
+import math
 
+def main():
+    y = float(input("Enter a number: "))
+    square_root = math.sqrt(y)
+    print("The square root of", y, "is", square_root)
 
+main()
+
+# calculate a retail item's sail price
+DISCOUNT_PERCENTAGE = 0.35
+
+def main():
+    reg_price = get_regular_price()
+    sale_price = reg_price - discount(reg_price)
+    print("The sale price is $", format(sale_price, ",.2f"), sep='')
+
+def get_regular_price():
+    price = float(input("Enter the item's regular price: "))
+    return price
+
+def discount(price):
+    return price * DISCOUNT_PERCENTAGE
+
+main()
+
+# roll dice
+# import statement
+import random
+
+# constants
+MIN = 1
+MAX = 6
+
+def main():
+    # loop control variable
+    again = 'y'
+    # simulate dice roll
+    while again == 'y'.lower():
+        print("Roll the dice ...")
+        print("Their values are:")
+        print(random.randint(MIN, MAX))
+        print(random.randint(MIN, MAX))
+
+        # roll again
+        again = input("Roll the dice again? (y = yes): ")
+
+# call main function
+main()
+
+# global constant
+CONTRIBUTION_RATE = 0.10
+
+def main():
+    gross_pay = float(input("Enter the gross pay: "))
+    bonus = float(input("Enter the amount of bonuses: "))
+    display_pay_contribution(gross_pay)
+    display_bonus_contribution(bonus)
+
+# display retirement contribution using gross as an argument
+def display_pay_contribution(gross):
+    c = gross * CONTRIBUTION_RATE
+    print("Contribution for gross pay: $", format(c, ",.2f"), sep='')
+
+# display retirement contribution using bonus as an argument
+def display_bonus_contribution(bonus):
+    c = bonus * CONTRIBUTION_RATE
+    print("Contribution for bonuses: $", format(c, ",.2f"), sep='')
+
+# call main function
+main()
+
+# keyword arguments
+def main():
+    f_name = input("Enter your first name: ")
+    l_name = input("Enter your last name: ")
+    print("Your name reversed is")
+    name_reversal(last=l_name, first=f_name)
+
+def name_reversal(first, last):
+    print(last, first)
+
+# call main function
+main()
+
+# pass multiple arguments
+def main():
+    print("The sum of 2 and 4 is ")
+    display_sum(2, 4)
+
+# displays the sum of one and two
+def display_sum(one, two):
+    result = one + two
+    print(result)
+
+# call main function
+main()
+
+# pass an argument to a function
+def main():
+    number = 10
+    display_triple(number)
+
+# display the result of x times 3
+def display_triple(x):
+    result = x * 3
+    print(result)
+
+# call main function
+main()
+
+# demonstrate a function
+def function():
+    print("This is a function.")
+
+# call the function
+function()
+"""
 
 # CHAPTER 4: Repetition Structures
 """

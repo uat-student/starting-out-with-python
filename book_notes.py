@@ -1,6 +1,70 @@
 
 
 
+# CHAPTER 7: List and Tuples
+"""
+# print a tuple
+the_tuple = (1,2,3,4,5)
+print(the_tuple)
+
+# assign random numbers to a two-dimensional list
+import random
+
+# constants for rows and columns
+ROWS = 3
+COLS = 4
+
+def main():
+    # create a 2D list
+    values = [[0, 0, 0, 0],
+              [0, 0, 0, 0],
+              [0, 0, 0, 0]]
+    # fill the list with random numbers
+    for r in range(ROWS):
+        for c in range(COLS):
+            values[r][c] = random.randint(1, 100)
+
+    print(values)
+
+main()
+
+# use "in" in a list
+def main():
+    product_numbers = ["V475", "F987", "Q143", "R688"]
+    search = input("Enter a product number: ")
+    if search in product_numbers:
+        print(search, "was found in the list.")
+    else:
+        print(search, "was not found in the list.")
+
+main()
+
+# slice list
+days = ["s", "m", "t", "w", "th", "f", "sat"]
+print(days[2:5])
+
+# sales list
+NUMBER_DAYS = 5
+
+def main():
+    # create list to hold sales for each day
+    sales = [0] * NUMBER_DAYS
+    # create an index
+    index = 0
+    print("Enter the sales for each day.")
+    # get the sales for each day
+    while index < NUMBER_DAYS:
+        print("Day #", index + 1, ": ", sep="", end="")
+        sales[index] = float(input())
+        index += 1
+        # display values
+    print("Here are the values you entered:")
+    for value in sales:
+        print(value)
+
+# call main
+main()
+"""
 
 # CHAPTER 6: Files and Exceptions
 """

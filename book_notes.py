@@ -1,3 +1,57 @@
+
+
+
+
+# CHAPTER 6: Files and Exceptions
+"""
+# write sales amounts to a text file
+def main():
+    # ask for the number of days
+    number_days = int(input("For how many days do you have sales?"))
+    # open a new file
+    sales_file = open("sales.txt", "w")
+    # get the amount of sales
+    for count in range(1, number_days + 1):
+        # ask for the day's sales
+        sales = float(input("Enter the sales for day #" + str(count) + ": "))
+        # write the sales to the file
+        sales_file.write(str(sales) + "\n")
+    # close the file
+    sales_file.close()
+    print("Data has been written to sales.txt")
+
+# call main
+main()
+
+# read from a file
+def main():
+    # open file
+    infile = open("write_file.txt", "r")
+    # read file's contents
+    file_contents = infile.read()
+    # close the file
+    infile.close()
+    # print file contents
+    print(file_contents)
+
+# call main
+main()
+
+# write to a file
+def main():
+    # open file
+    outfile = open("write_file.txt", "w")
+    # write names
+    outfile.write("John Locke\n")
+    outfile.write("David Hume\n")
+    outfile.write("Edmund Burke\n")
+    # close the file
+    outfile.close()
+
+# call main
+main()
+"""
+
 # CHAPTER 5: Functions
 """
 # demonstrate sqrt function

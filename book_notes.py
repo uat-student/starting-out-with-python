@@ -1,5 +1,82 @@
 
+# CHAPTER 9: Dictionaries and Sets
 
+
+# CHAPTER 8: More about Strings
+"""
+# demonstrate some string testing methods
+def main():
+    # ask for a string from the user
+    user_string = input("Enter a string: ")
+    print("Here is the information about that string:")
+    # string tests
+    if user_string.isalnum():
+        print("The string is alphanumeric.")
+    if user_string.isdigit():
+        print("The string contains only digits.")
+    if user_string.isalpha():
+        print("The string contains only alphabetic characters.")
+    if user_string.isspace():
+        print("The string contains only whitespace characters.")
+    if user_string.islower():
+        print("The letters in the string are all lowercase.")
+    if user_string.isupper():
+        print("The letters in the string are all uppercase.")
+
+# call main
+main()
+
+# extract characters from a string
+def main():
+    # ask the user's first name, last name, and ID number
+    first = input("Enter your first name: ")
+    last = input("Enter your last name: ")
+    id_number = input("Enter your student ID number: ")
+    # get the login name
+    print("Your system login name is:")
+    print(get_login_name(first, last, id_number))
+
+def get_login_name(first, last, idnumber):
+    # get first three characters
+    set1 = first[0:3]
+    # get first three characters
+    set2 = last[0:3]
+    # get last three characters
+    set3 = idnumber[-3:]
+    # put the character sets together
+    login_name = set1 + set2 + set3
+    return login_name
+
+# call main
+main()
+
+# concatenate strings
+def main():
+    name = "Jane"
+    print("The name is", name)
+    name = name + " Doe"
+    print("Currently, the name is", name)
+
+# call main
+main()
+
+
+# count the number of "Ts" in the string
+def main():
+    # create count variable
+    count = 0
+    # ask for a string from the user
+    a_string = input("Enter a sentence: ")
+    # count the "Ts"
+    for t in a_string:
+        if t == "T" or t == "t":
+            count += 1
+    # print the results
+    print("The letter T appears", count, "times.")
+
+# call main
+main()
+"""
 
 # CHAPTER 7: List and Tuples
 """

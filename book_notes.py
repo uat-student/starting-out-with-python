@@ -1,6 +1,207 @@
 
 # CHAPTER 9: Dictionaries and Sets
+"""
+# demonstrate unpickling
+import pickle
 
+# main function
+def main():
+    end_of_file = False # indicates end of file
+    # open a file for binary reading
+    input_file = open("info.dat", "rb")
+    # read to the end of the file
+    while not end_of_file:
+        try:
+            # unpickle the next object
+            person = pickle.load(input_file)
+            # display the object
+            display_data(person)
+        except EOFError:
+            # set flag to indicate the end
+            # of the file has been reached
+            end_of_file = True
+
+    # close the file
+    input_file.close()
+
+# displays person data
+def display_data(person):
+    print("Name:", person["name"])
+    print("Age:", person["age"])
+    print("Weight:", person["weight"])
+    print()
+
+# call main
+main()
+
+# demonstrate pickling
+import pickle
+
+# main function
+def main():
+    again = 'y' # control loop repetition
+    # open a file for binary writing
+    output_file = open("info.dat", "wb")
+    # get data until the user wants to stop
+    while again.lower() == "y":
+        # get data about a person and save it
+        save_data(output_file)
+        # does the user want to enter more data
+        again = input("Enter more data? (y/n): ")
+
+    # close the file
+    output_file.close()
+
+# ask for data about a person,
+# store it in a dictionary, and
+# pickle the dictionary
+def save_data(file):
+    # create an empty dictionary
+    person = {}
+    # ask for data
+    person["name"] = input("Name: ")
+    person["age"] = int(input("Age: "))
+    person["weight"] = float(input("Weight: "))
+    # pickle the dictionary
+    pickle.dump(person, file)
+
+# call main
+main()
+
+
+
+
+
+# demonstrate set operations
+baseball = set(["Jodi", "Carmen", "Aida", "Alicia"])
+basketball = set(["Eva", "Carmen", "Alicia", "Sarah"])
+
+# display baseball names
+print("The following students are on the baseball team:")
+for name in baseball:
+    print(name)
+
+# display basketball names
+print()
+print("The following students are on the basketball team:")
+for name in basketball:
+    print(name)
+
+# demonstrate intersection
+print()
+print("The following students play both baseball and basketball:")
+for name in baseball.intersection(basketball):
+    print(name)
+
+# demonstrate union
+print()
+print("The following students play either baseball or basketball:")
+for name in baseball.union(basketball):
+    print(name)
+
+# demonstrate difference of baseball and basketball
+print()
+print("The following students play baseball, but not basketball:")
+for name in baseball.difference(basketball):
+    print(name)
+
+# demonstrate difference of basketball and baseball
+print()
+print("The following students play basketball, but not baseball:")
+for name in basketball.difference(baseball):
+    print(name)
+
+# demonstrate symmetric difference
+print()
+print("The following students play one sport, but not both:")
+for name in baseball.symmetric_difference(basketball):
+    print(name)
+
+
+# global menu choices
+LOOK_UP = 1
+ADD = 2
+CHANGE = 3
+DELETE = 4
+QUIT = 5
+
+def main():
+    # create an empty dictionary
+    birthdays = {}
+    # create variable for user's choice
+    choice = 0
+    while choice != QUIT:
+        # get user's menu choice
+        choice = get_menu_choice()
+        # process user choice
+        if choice == LOOK_UP:
+            look_up(birthdays)
+        elif choice == ADD:
+            add(birthdays)
+        elif choice == CHANGE:
+            change(birthdays)
+        elif choice == DELETE:
+            delete(birthdays)
+
+def get_menu_choice():
+    print()
+    print("Friends and Their Birthdays")
+    print("---------------------------")
+    print("1. Look up a birthday")
+    print("2. Add a new birthday")
+    print("3. Change a birthday")
+    print("4. Delete a birthday")
+    print("5. Quit the program")
+    print()
+
+    # ask for user's choice
+    choice = int(input("Enter your choice: "))
+
+    # validate the choice
+    while choice < LOOK_UP or choice > QUIT:
+        choice = int(input("Enter a valid choice: "))
+
+    # return user's choice
+    return choice
+
+def look_up(birthdays):
+    # get a name to look up
+    name = input("Enter a name: ")
+    # look it up in the dictionary
+    print(birthdays.get(name, "Not found."))
+
+def add(birthdays):
+    # get a name and birthday
+    name = input("Enter a name: ")
+    bday = input("Enter a birthday: ")
+    # if name does not exist, add it
+    if name not in birthdays:
+        birthdays[name] = bday
+    else:
+        print("That entry already exists.")
+
+def change(birthdays):
+    # get a name to look up
+    name = input("Enter a name: ")
+    if name in birthdays:
+        # get a new birthday
+        bday = input("Enter the new birthday: ")
+        # update the entry
+        birthdays[name] = bday
+    else:
+        print("That name is not found.")
+
+def delete(birthdays):
+    # get a name to look up
+    name = input("Enter a name: ")
+    # if name is found, delete the entry
+    if name in birthdays:
+        del birthdays[name]
+    else:
+        print("The name is not found.")
+
+main()
+"""
 
 # CHAPTER 8: More about Strings
 """

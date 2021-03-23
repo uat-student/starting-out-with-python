@@ -1,4 +1,187 @@
 
+# CHAPTER 10: Classes and Object-Oriented Programming
+"""
+# manage contacts
+import pickle
+
+# global constants
+LOOK_UP = 1
+ADD = 2
+CHANGE = 3
+DELETE = 4
+QUIT = 5
+
+FILENAME = "contacts.dat"
+
+class Contact:
+    # initialize the attributes
+    def __int__(self, name, phone, email):
+        self.__name = name
+        self.__phone = phone
+        self.__email = email
+
+    # set_name method sets the name attribute
+    def set_name(self, name):
+        self.__name = name
+
+    # set_phone method sets the phone attribute
+    def set_phone(self, phone):
+        self.__phone = phone
+
+    # set_email method sets the email attribute
+    def set_email(self, email):
+        self.__email = email
+
+    # get_name methods returns the name attribute
+    def get_name(self):
+        return self.__name
+
+    # get_phone method returns the phone attribute
+    def get_phone(self):
+        return self.__phone
+
+    # get_email method returns the email attribute
+    def get_email(self):
+        return self.__email
+
+    # __str__ method returns the object's state
+    # as a string
+    def __str__(self):
+        return "Name: " + self.__name + "\nPhone: " + self.__phone + "\nEmail: " + self.__email
+
+def main():
+    # load existing dictionary
+    mycontacts = load_contacts()
+    # initialize a variable for user's choice
+    choice = 0
+    # process menu selection
+    while choice != QUIT:
+        # ask for user's choice
+        choice = get_menu_choice()
+        if choice == LOOK_UP:
+            look_up(mycontacts)
+        elif choice == ADD:
+            add(mycontacts)
+        elif choice == CHANGE:
+            change(mycontacts)
+        elif choice == DELETE:
+            delete(mycontacts)
+
+    # save mycontacts to a file
+    save_contacts(mycontacts)
+
+
+def load_contacts():
+    try:
+        input_file = open(FILENAME, "rb")
+        contact_dct = pickle.load(input_file)
+        input_file.close()
+    except IOError:
+        contact_dct = {}
+
+    return contact_dct
+
+def save_contacts(mycontacts):
+    output_file = open(FILENAME, "wb")
+    pickle.dump(mycontacts, output_file)
+    output_file.close()
+
+def look_up(mycontacts):
+    name = input("Enter a name: ")
+    print(mycontacts.get(name, "That name is not found."))
+
+def add(mycontacts):
+    name = input("Name: ")
+    phone = input("Phone: ")
+    email = input("Email: ")
+
+    entry = contact.Contact(name, phone, email)
+
+    if name not in mycontacts:
+        mycontacts[name] = entry
+        print("The entry has been added.")
+    else:
+        print("That name already exists.")
+
+def change(mycontacts):
+    name = input("Enter a name: ")
+    if name in mycontacts:
+        phone = input("Enter the new phone number: ")
+        email = input("Enter the new email address: ")
+        entry = contact.Contact(name, phone, email)
+        mycontacts[name] = entry
+        print("Information updated.")
+    else:
+        print("That name is not found.")
+
+def delete(mycontacts):
+    name = input("Enter a name: ")
+    if name in mycontacts:
+        del mycontacts[name]
+        print("Entry deleted.")
+    else:
+        print("That name is not found.")
+
+def get_menu_choice():
+    print()
+    print("Menu")
+    print("-----------------------")
+    print("1. Look up a contact")
+    print("2. Add a new contact")
+    print("3. Change an existing contact")
+    print("4. Delete a contact")
+    print("5. Quit the program")
+    print()
+
+    # get user's choice
+    choice = int(input("Enter your choice: "))
+
+    # validate the choice
+    while choice < LOOK_UP or choice > QUIT:
+        choice = int(input("Enter a valid choice: "))
+
+    # return user's choice
+    return choice
+
+# call main
+main()
+
+
+# coin demo
+import random
+
+class Coin:
+    # initialize sideup data attribute with "Heads"
+    def __init__(self):
+        self.sideup = "Heads"
+
+    # generate a random number
+    # 0 == "Heads", 1 == "Tails"
+    def toss(self):
+        if random.randint(0, 1) == 0:
+            self.sideup = "Heads"
+        else:
+            self.sideup = "Tails"
+
+    # get_sideup returns the value referenced by sideup
+    def get_sideup(self):
+        return self.sideup
+
+def main():
+    # create an object from the coin class
+    a_coin = Coin()
+    # display the side of the coin that is facing up
+    print("This side is up:", a_coin.get_sideup())
+    # toss the coin
+    print("The coin is being tossed . . .")
+    a_coin.toss()
+    # display the side of the coin that is facing up
+    print("This side is up:", a_coin.get_sideup())
+
+# call main
+main()
+"""
+
 # CHAPTER 9: Dictionaries and Sets
 """
 # demonstrate unpickling
